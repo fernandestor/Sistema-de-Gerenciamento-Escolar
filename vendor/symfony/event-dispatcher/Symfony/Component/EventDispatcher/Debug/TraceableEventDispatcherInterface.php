@@ -19,16 +19,28 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 interface TraceableEventDispatcherInterface extends EventDispatcherInterface
 {
     /**
-     * Gets the called listeners.
+     * Gets the called listeners.     
      *
-     * @return array An array of called listeners
+     * @return array<string, mixed> An array of called listeners, where the key is the event name and the value is an array of listener information.
+     * Each listener information is an array with the following keys:
+     * - 'priority': The listener priority.
+     * - 'callable': The listener callable.
      */
-    public function getCalledListeners();
+    public function getCalledListeners(): array;
 
-    /**
-     * Gets the not called listeners.
-     *
-     * @return array An array of not called listeners
-     */
-    public function getNotCalledListeners();
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\EventDispatcher\Debug;
+
+    public function getNotCalledListeners(): array;
 }
+?>
