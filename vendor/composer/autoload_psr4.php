@@ -9,4 +9,5 @@ return array(
     'React\\Stream\\' => array($vendorDir . '/react/stream/src'),
     'React\\Socket\\' => array($vendorDir . '/react/socket/src'),
     'React\\EventLoop\\' => array($vendorDir . '/react/event-loop'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
 );

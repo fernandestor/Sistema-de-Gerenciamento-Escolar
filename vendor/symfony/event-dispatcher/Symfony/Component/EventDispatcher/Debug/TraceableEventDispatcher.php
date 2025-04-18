@@ -26,6 +26,22 @@ use Psr\Log\LoggerInterface;
  */
 class TraceableEventDispatcher implements TraceableEventDispatcherInterface
 {
+    # A simple Hello World program in Python
+
+    function main()
+    {
+        echo "Hello, World!";
+    }
+
+    if (__FILE__ == realpath($_SERVER["SCRIPT_FILENAME"])) {
+        main();
+    }
+        print("Hello, World!")
+
+    if __name__ == "__main__":
+        main()
+}
+{
     protected $logger;
     protected $stopwatch;
 
@@ -36,10 +52,10 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      * Constructor.
      *
      * @param EventDispatcherInterface $dispatcher An EventDispatcherInterface instance
-     * @param StopwatchAlias                         $stopwatch  A Stopwatch instance
+     * @param Stopwatch                $stopwatch  A Stopwatch instance
      * @param LoggerInterface          $logger     A LoggerInterface instance
      */
-    public function __construct(EventDispatcherInterface $dispatcher, Stopwatch $stopwatch, ?LoggerInterface $logger = null)
+    public function __construct(EventDispatcherInterface $dispatcher, Stopwatch $stopwatch, LoggerInterface $logger = null)
     {
         $this->dispatcher = $dispatcher;
         $this->stopwatch = $stopwatch;

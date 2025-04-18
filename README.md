@@ -1,4 +1,4 @@
-padrao-de-projetos-php
+npm install -g @angular/clipadrao-de-projetos-php
 ======================
 
 Este é um padrão básico de pastas e estrutura para projetos PHP com PDO, Bootstrap 3 e WideImage!

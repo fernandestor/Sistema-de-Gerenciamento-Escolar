@@ -105,7 +105,14 @@ if($branco > 0){
 }
 for($i = 1; $i <= $n; $i++ ){/*agora vamos no banco de dados verificar os evendos*/
     $dtevento = $i."-".$month."-".$ano;
-    $sqlag = mysql_query("SELECT * FROM agenda WHERE dtevento = '$dtevento'") or die(mysql_error());
+    $conn = new mysqli("localhost", "username", "password", "database"); // Replace with your database credentials
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sqlag = $conn->query("SELECT * FROM agenda WHERE dtevento = '$dtevento'");
+    if (!$sqlag) {
+        die("Query failed: " . $conn->error);
+    }
     $num = mysql_num_rows($sqlag);/*quantos eventos tem para o mes*/
     $idev = @mysql_result($sqlag, 0, "dtevento");
     $eve = @mysql_result($sqlag, 0, "evento");
@@ -144,7 +151,7 @@ if($qt > 0){/*se tiver evento no mês imprime quantos tem */
 if(isset($_GET['d'])){/*link dos dias de eventos*/
     $idev = $_GET['d'];
     $sqlev = mysql_query("SELECT * FROM agenda WHERE dtevento = '$idev' ORDER BY hora ASC") or die(mysql_error());
-    $numev = mysql_num_rows($sqlev);
+    $numev = mysqli_num_rows($sqlev);
     for($j = 0; $j < $numev; $j++){/*caso no mesmo dia tenha mais eventos continua imprimindo */
         $eve = @mysql_result($sqlev, $j, "evento");/*pegando os valores do banco referente ao evento*/
         $dev = @mysql_result($sqlev, $j, "dtevento");
